@@ -29,6 +29,5 @@ public class PlayerController : MonoBehaviour
             float vertical = Input.GetAxis("Vertical");
             transform.Translate(Vector2.up * vertical * Time.deltaTime * vaisseauSpeed);
         }
-        Debug.Log(transform.position);
     }
 }

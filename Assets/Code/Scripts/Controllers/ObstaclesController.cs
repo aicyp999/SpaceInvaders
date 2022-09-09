@@ -21,8 +21,6 @@ public class ObstaclesController : MonoBehaviour
         if (target)
         {
             Vector3 moveDir = (target.transform.position - transform.position).normalized;
-            Debug.Log(target.name);
-            Debug.Log(target.transform.position);
             transform.position += moveDir * Time.deltaTime * obstacleSpeed;
         }
     }

@@ -22,7 +22,6 @@ public class BackgroundGenerator : MonoBehaviour
         if (!bgInst)
         {
             bgInst = Instantiate(bg, transform.position, transform.rotation) as GameObject;
-            Debug.Log("just spawned");
         } else
         {
             bgInst.transform.Translate(Vector2.down * Time.deltaTime * speed);
