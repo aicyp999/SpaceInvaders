@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSpeed: 3.64
+  target: {fileID: 4282138070707546946, guid: 064a0728d2bc2e64cad40a2913a97c8d, type: 3}
 --- !u!114 &5957418968432688945
 MonoBehaviour:
   m_ObjectHideFlags: 0

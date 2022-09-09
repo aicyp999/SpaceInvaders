@@ -836,5 +836,10 @@ PrefabInstance:
       propertyPath: vaisseauSpeed
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 4282138070707546975, guid: 064a0728d2bc2e64cad40a2913a97c8d,
+        type: 3}
+      propertyPath: controlWithMouse
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064a0728d2bc2e64cad40a2913a97c8d, type: 3}
