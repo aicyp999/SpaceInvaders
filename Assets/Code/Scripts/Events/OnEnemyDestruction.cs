@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class OnEnemyDestruction : MonoBehaviour
 {
+
+    private int numberOfHits = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +22,24 @@ public class OnEnemyDestruction : MonoBehaviour
     // Increment score and self destruct
     public void destruct()
     {
-        GameObject sceneManager = GameObject.Find("SceneManager");
-
-        if (sceneManager != null && gameObject != null)
+        
+        if (canBeHit())
         {
-            sceneManager.GetComponent<SceneManagement>().incrementScore();
-        }
+            GameObject sceneManager = GameObject.Find("SceneManager");
 
-        Destroy(gameObject);
+            if (sceneManager != null && gameObject != null)
+            {
+                sceneManager.GetComponent<SceneManagement>().incrementScore();
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+    // To avoid multiple collisions at the same time
+    private bool canBeHit()
+    {
+        numberOfHits--;
+        return numberOfHits >= 0;
     }
 }

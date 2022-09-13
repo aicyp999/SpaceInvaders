@@ -8,16 +8,19 @@ public class SceneManagement : MonoBehaviour
     private GameObject player;
     private Scene currentScene;
     private int score;
+    private int lastRecord;
 
     void Start()
     {
         player = GameObject.Find("Vaisseau");
         currentScene = SceneManager.GetActiveScene();
         score = 0;
+        lastRecord = PlayerPrefs.GetInt("LastRecord", 0);
 
         if (currentScene.name == "Restart")
         {
-            // TODO: Get the last game's score
+            score = PlayerPrefs.GetInt("LastGameScore", 0);
+            Debug.Log("You made: " + score + " points");
         }
     }
 
@@ -50,8 +53,14 @@ public class SceneManagement : MonoBehaviour
 
     public void gameOver()
     {
-        Debug.Log("You made: " + score + " points");
-        SceneManager.LoadScene("Restart", LoadSceneMode.Additive);
+        PlayerPrefs.SetInt("LastGameScore", score);
+
+        if (lastRecord < score)
+        {
+            PlayerPrefs.SetInt("LastRecord", lastRecord);
+        }
+
+        SceneManager.LoadScene("Restart", LoadSceneMode.Single);
     }
 
     public void backToMenu()
@@ -68,5 +77,10 @@ public class SceneManagement : MonoBehaviour
     public int getScore()
     {
         return score;
+    }
+
+    public int getLastRecord()
+    {
+        return lastRecord;
     }
 }
