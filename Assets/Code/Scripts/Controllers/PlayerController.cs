@@ -10,12 +10,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Movements
         if (controlWithMouse)
         {
             var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

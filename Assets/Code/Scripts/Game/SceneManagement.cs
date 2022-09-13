@@ -5,21 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    public GameObject player;
-
+    private GameObject player;
     private Scene currentScene;
-    
+    private int score;
+
     void Start()
     {
+        player = GameObject.Find("Vaisseau");
         currentScene = SceneManager.GetActiveScene();
+        score = 0;
+
+        if (currentScene.name == "Restart")
+        {
+            // TODO: Get the last game's score
+        }
     }
 
     void Update()
     {
         if (currentScene.name == "Game" && player == null)
         {
-            Debug.Log("OK");
-            gameOver(0);
+            gameOver();
         }
     }
 
@@ -39,13 +45,28 @@ public class SceneManagement : MonoBehaviour
     public void play()
     {
         Debug.Log("go to game");
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 
-    public void gameOver(int points)
+    public void gameOver()
     {
-        Debug.Log("You made: " + points + " points");
-        Debug.Log("go to restart");
-        SceneManager.LoadScene("Restart");
+        Debug.Log("You made: " + score + " points");
+        SceneManager.LoadScene("Restart", LoadSceneMode.Additive);
+    }
+
+    public void backToMenu()
+    {
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+    }
+
+    public void incrementScore()
+    {
+        Debug.Log("score is :" + score);
+        score += 1;
+    }
+
+    public int getScore()
+    {
+        return score;
     }
 }
