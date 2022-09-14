@@ -17,7 +17,7 @@ public class LastRecord : MonoBehaviour
         if (sceneManager != null && uiScoreText != null)
         {
             lastRecord = sceneManager.GetComponent<SceneManagement>().getLastRecord();
-            uiScoreText.text = "last record: " + lastRecord;
+            uiScoreText.text = "<YOUR RECORD IS> " + lastRecord + " <POINTS>";
         } else
         {
             uiScoreText.text = "we lost your last record... weird...";

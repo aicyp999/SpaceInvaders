@@ -17,7 +17,7 @@ public class ScoreText : MonoBehaviour
         if (sceneManager != null && uiScoreText != null)
         {
             score = sceneManager.GetComponent<SceneManagement>().getScore();
-            uiScoreText.text = "last score: " + score;
+            uiScoreText.text = "<YOUR SCORE IS> " + score + " <POINTS>";
         } else
         {
             uiScoreText.text = "we lost the score... weird...";
