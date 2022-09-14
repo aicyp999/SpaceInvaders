@@ -16,6 +16,7 @@ public class SceneManagement : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         score = 0;
         lastRecord = PlayerPrefs.GetInt("LastRecord", 0);
+        Debug.Log("lr:" + lastRecord);
 
         if (currentScene.name == "Restart")
         {
@@ -57,7 +58,7 @@ public class SceneManagement : MonoBehaviour
 
         if (lastRecord < score)
         {
-            PlayerPrefs.SetInt("LastRecord", lastRecord);
+            PlayerPrefs.SetInt("LastRecord", score);
         }
 
         SceneManager.LoadScene("Restart", LoadSceneMode.Single);
