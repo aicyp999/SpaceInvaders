@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4282138070707546975}
   - component: {fileID: 4282138070707546974}
   - component: {fileID: 4282138070707546969}
+  - component: {fileID: 8136949756649539816}
+  - component: {fileID: 2115486544885163380}
+  - component: {fileID: 7544416236962888489}
   m_Layer: 0
   m_Name: Vaisseau
   m_TagString: Player
@@ -147,6 +150,45 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.04, y: 3.04}
   m_EdgeRadius: 0
+--- !u!114 &8136949756649539816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4282138070707546946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53797c8cf9ef21b4c9540dae534e4214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: Boost
+--- !u!114 &2115486544885163380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4282138070707546946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53797c8cf9ef21b4c9540dae534e4214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: Enemy
+--- !u!114 &7544416236962888489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4282138070707546946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53797c8cf9ef21b4c9540dae534e4214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: Obstacle
 --- !u!1001 &4282138071462063190
 PrefabInstance:
   m_ObjectHideFlags: 0

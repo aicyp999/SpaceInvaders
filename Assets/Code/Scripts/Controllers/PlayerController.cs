@@ -7,10 +7,16 @@ public class PlayerController : MonoBehaviour
     public float vaisseauSpeed;
     public bool controlWithMouse;
 
+    private float realVaisseauSpeed;
+    private float boostTimeRemaining = 0f;
+    private float timeInterval = .1f;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        realVaisseauSpeed = vaisseauSpeed;
     }
 
     // Update is called once per frame
@@ -29,6 +35,39 @@ public class PlayerController : MonoBehaviour
 
             float vertical = Input.GetAxis("Vertical");
             transform.Translate(Vector2.up * vertical * Time.deltaTime * vaisseauSpeed);
+        }
+
+        if (boostTimeRemaining != 0f)
+        {
+            boostTimeRemaining -= timeInterval;
+            realVaisseauSpeed = vaisseauSpeed * 2;
+        } else
+        {
+            realVaisseauSpeed = vaisseauSpeed;
+        }
+    }
+
+    public void boost()
+    {
+        Debug.Log("BOOST");
+        boostTimeRemaining = 3f;
+    }
+
+    public void destruct()
+    {
+        GameObject sceneManager = GameObject.Find("SceneManager");
+        SceneManagement manager;
+
+        if (sceneManager != null && gameObject != null)
+        {
+            manager = sceneManager.GetComponent<SceneManagement>();
+            if (manager.getLifePoints() > 1)
+            {
+                manager.decreaseLifePoints();
+            } else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

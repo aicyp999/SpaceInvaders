@@ -5,18 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
+    public AudioSource audioSource;
+
     private GameObject player;
     private Scene currentScene;
     private int score;
     private int lastRecord;
+    private int lifePoints;
 
     void Start()
     {
         player = GameObject.Find("Vaisseau");
         currentScene = SceneManager.GetActiveScene();
         score = 0;
+        lifePoints = 3;
         lastRecord = PlayerPrefs.GetInt("LastRecord", 0);
         Debug.Log("lr:" + lastRecord);
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
 
         if (currentScene.name == "Restart")
         {
@@ -83,5 +92,20 @@ public class SceneManagement : MonoBehaviour
     public int getLastRecord()
     {
         return lastRecord;
+    }
+
+    public int getLifePoints()
+    {
+        return lifePoints;
+    }
+
+    public void decreaseLifePoints()
+    {
+        lifePoints -= 1;
+    }
+
+    public void increaseLifePoints()
+    {
+        lifePoints += 1;
     }
 }
