@@ -121,6 +121,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &172583581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 172583582}
+  m_Layer: 0
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &172583582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172583581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8036678, y: 1.9628808, z: 150.17734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 757827439}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235896901
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,8 +708,6 @@ GameObject:
   - component: {fileID: 656940800}
   - component: {fileID: 656940799}
   - component: {fileID: 656940802}
-  - component: {fileID: 656940803}
-  - component: {fileID: 656940804}
   m_Layer: 0
   m_Name: WallCollider_B
   m_TagString: Collider
@@ -759,33 +788,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53797c8cf9ef21b4c9540dae534e4214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: Obstacle
---- !u!114 &656940803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656940798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53797c8cf9ef21b4c9540dae534e4214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: Enemy
---- !u!114 &656940804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656940798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53797c8cf9ef21b4c9540dae534e4214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: Background
+  targets:
+  - Obstacle
+  - Enemy
+  - Boost
+  crashSound: {fileID: 8300000, guid: 2c06188a64e95054387c543df4efc426, type: 3}
+  powerSound: {fileID: 8300000, guid: 6392eda1947f17e4a94cc68b8d483526, type: 3}
 --- !u!1 &757827437
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +805,7 @@ GameObject:
   - component: {fileID: 757827439}
   - component: {fileID: 757827438}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Ambiant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -814,10 +822,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1e9b4c91c0b12184b9255bbd81ff6c01, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -906,12 +914,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757827437}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0311694, y: 0.4964714, z: 125.00795}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.8348372, y: -1.4664094, z: -25.169388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 172583582}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918710157
 GameObject:
@@ -1023,7 +1031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53797c8cf9ef21b4c9540dae534e4214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: Player
+  targets:
+  - Player
+  crashSound: {fileID: 8300000, guid: 2c06188a64e95054387c543df4efc426, type: 3}
+  powerSound: {fileID: 8300000, guid: 6392eda1947f17e4a94cc68b8d483526, type: 3}
 --- !u!61 &1349258855
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1297,6 +1308,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2115486544885163380, guid: 064a0728d2bc2e64cad40a2913a97c8d,
+        type: 3}
+      propertyPath: targets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4282138070707546946, guid: 064a0728d2bc2e64cad40a2913a97c8d,
         type: 3}
       propertyPath: m_Name
@@ -1365,7 +1381,7 @@ PrefabInstance:
     - target: {fileID: 4282138070707546975, guid: 064a0728d2bc2e64cad40a2913a97c8d,
         type: 3}
       propertyPath: controlWithMouse
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2307512223946179186, guid: 064a0728d2bc2e64cad40a2913a97c8d, type: 3}
