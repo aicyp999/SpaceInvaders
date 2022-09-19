@@ -7,10 +7,6 @@ using UnityEngine.Audio;
 public class DestroyTargetOnCollision : MonoBehaviour
 {
     public string[] targets;
-    public AudioClip crashSound;
-    public AudioClip powerSound;
-
-    private AudioSource soundPlay;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -65,25 +61,21 @@ public class DestroyTargetOnCollision : MonoBehaviour
 
     private void PlaySound(string type)
     {
-        soundPlay = gameObject.AddComponent<AudioSource>();
-        soundPlay.playOnAwake = false;
+        GameObject crash = GameObject.Find("AudioCrash");
+        GameObject powerUp = GameObject.Find("AudioPowerUp");
 
         switch (type)
         {
             case "crash":
-                soundPlay.clip = crashSound;
-                if (!soundPlay.isPlaying)
+                if (crash != null)
                 {
-                    soundPlay.PlayOneShot(crashSound, 1);
-                    Debug.Log("CRASH SOUND");
+                    crash.GetComponent<AudioSource>().Play();
                 }
                 break;
             case "power":
-                soundPlay.clip = powerSound;
-                if (!soundPlay.isPlaying)
+                if (crash != null)
                 {
-                    soundPlay.PlayOneShot(powerSound, 1);
-                    Debug.Log("POWER SOUND");
+                    powerUp.GetComponent<AudioSource>().Play();
                 }
                 break;
             default:
@@ -91,7 +83,5 @@ public class DestroyTargetOnCollision : MonoBehaviour
                 Debug.Log("NOTHING");
                 break;
         }
-
-        Destroy(soundPlay);
     }
 }

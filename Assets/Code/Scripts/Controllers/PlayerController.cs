@@ -10,13 +10,16 @@ public class PlayerController : MonoBehaviour
     private float realVaisseauSpeed;
     private float boostTimeRemaining = 0f;
     private float timeInterval = .1f;
-
+    private GameObject gunL;
+    private GameObject gunR;
 
 
     // Start is called before the first frame update
     void Start()
     {
         realVaisseauSpeed = vaisseauSpeed;
+        gunL = gameObject.transform.GetChild(0).gameObject;
+        gunR = gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
@@ -44,6 +47,14 @@ public class PlayerController : MonoBehaviour
         } else
         {
             realVaisseauSpeed = vaisseauSpeed;
+            if (gunL != null)
+            {
+                gunL.GetComponent<ShootOnClick>().stopFireBoost();
+            }
+            if (gunR != null)
+            {
+                gunR.GetComponent<ShootOnClick>().stopFireBoost();
+            }
         }
     }
 
@@ -51,6 +62,15 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("BOOST");
         boostTimeRemaining = 3f;
+
+        if (gunL != null)
+        {
+            gunL.GetComponent<ShootOnClick>().fireBoost();
+        }
+        if (gunR != null)
+        {
+            gunR.GetComponent<ShootOnClick>().fireBoost();
+        }
     }
 
     public void destruct()
