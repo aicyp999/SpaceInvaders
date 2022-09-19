@@ -18,10 +18,10 @@ public class ObstaclesController : MonoBehaviour
     {
         transform.Translate(Vector2.down * Time.deltaTime * obstacleSpeed);
 
-        if (target)
+        if (target && target.transform.position.y < transform.position.y)
         {
             Vector3 moveDir = (target.transform.position - transform.position).normalized;
-            transform.position += moveDir * Time.deltaTime * obstacleSpeed;
+            transform.position += new Vector3(moveDir.x * Time.deltaTime * obstacleSpeed, 0, 0);
         }
     }
 }

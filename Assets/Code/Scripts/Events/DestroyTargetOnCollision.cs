@@ -66,7 +66,7 @@ public class DestroyTargetOnCollision : MonoBehaviour
     private void PlaySound(string type)
     {
         soundPlay = gameObject.AddComponent<AudioSource>();
-        soundPlay.playOnAwake = true;
+        soundPlay.playOnAwake = false;
 
         switch (type)
         {
@@ -74,7 +74,7 @@ public class DestroyTargetOnCollision : MonoBehaviour
                 soundPlay.clip = crashSound;
                 if (!soundPlay.isPlaying)
                 {
-                    soundPlay.Play();
+                    soundPlay.PlayOneShot(crashSound, 1);
                     Debug.Log("CRASH SOUND");
                 }
                 break;
@@ -82,7 +82,7 @@ public class DestroyTargetOnCollision : MonoBehaviour
                 soundPlay.clip = powerSound;
                 if (!soundPlay.isPlaying)
                 {
-                    soundPlay.Play();
+                    soundPlay.PlayOneShot(powerSound, 1);
                     Debug.Log("POWER SOUND");
                 }
                 break;
